@@ -10,22 +10,34 @@
 <form action="document_change_confirming" method="post">
 @csrf
 <input type="hidden" name="catalog_number" value="{{$register_data->catalog_number}}">
+<!-- //バリデーション追記部分 -->
 <table>
   <tr>
     <th>資料ID</th>
-    <td><input type="text" name="catalog_id" value="{{$register_data->catalog_id}}"></td>
+    <td><input type="text" name="catalog_id" value="{{old('catalog_id')}}">
+    @if($errors->has('catalog_id'))
+    {{$errors->first('catalog_id')}}
+    @endif</td>
   </tr>
-  <tr>
     <th>資料名</th>
-    <td><input type="text" name="catalog_name" value="{{$register_data->catalog_name}}"></td>
+    <td><input type="text" name="catalog_name" value="{{old('catalog_name')}}">
+    @if($errors->has('catalog_name'))
+    {{$errors->first('catalog_name')}}
+    @endif</td>
   </tr>
   <tr>
     <th>廃棄年月日</th>
-    <td><input type="text" name="disposal_date" value="{{$register_data->disposal_date}}"></td>
+    <td><input type="text" name="disposal_date" value="{{old('disposal_date')}}">
+    @if($errors->has('disposal_date'))
+    {{$errors->first('disposal_date')}}
+    @endif</td>
   </tr>
   <tr>
     <th>備考</th>
-    <td><input type="text" name="catalog_remark" value="{{$register_data->catalog_remark}}"></td>
+    <td><input type="text" name="catalog_remark" value="{{old('catalog_remark')}}">
+    @if($errors->has('catalog_remark'))
+    {{$errors->first('catalog_remark')}}
+    @endif</td>
   </tr>
 </table>
 

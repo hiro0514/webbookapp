@@ -35,16 +35,15 @@
     <td nowrap>{{ $item->catalog_publishername }}</td>
     <td nowrap>{{ $item->catalog_publication }}</td>
     <td nowrap>{{ $register->catalog_id }}</td>
-    <!-- 栗山先生追記部分 -->
-    <!-- <td><a href-"document_change?catalog_id={{$item->catalog_id}}">変更</a></td> -->
 
+<!-- バリデーション追記 -->
 <td nowrap><form class="" action="document_change" method="post">
   @csrf
   <input type="hidden" name="catalog_id" value="{{$register->catalog_id}}">
   <input type="hidden" name="catalog_number" value="{{$register->catalog_number}}">
   <input type="hidden" name="catalog_name" value="{{$item->catalog_name}}">
   <input type="hidden" name="catalog_remark" value="{{$register->catalog_remark}}">
-    <input type="hidden" name="disposal_date" value="{{$register->disposal_date}}">
+  <input type="hidden" name="disposal_date" value="{{$register->disposal_date}}">
   <input type="submit" class="next_button" value="変更">
 </form></td>
     <td><a href="./document_change">削除</td>
