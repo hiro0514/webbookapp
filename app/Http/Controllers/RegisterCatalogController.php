@@ -31,9 +31,14 @@ class RegisterCatalogController extends Controller
     return view('document_change',['document_data',$change]);
   }
 
-  //資料変更確認機能
+  // //資料変更確認機能
   public function edit_document_check(Request $request){
-  // ここにバリデーションを追記
+  //   ここにバリデーションを追記
+    $this->validate($request,Catalog::$document_change_rules,Catalog::$document_change_messages);
+    //資料ID、資料名、廃棄年月日、備考のバリデーション追記
+    $param = ['catalog_id'=>$request->catalog_id,'catalog_name'=>$request->catalog_name,'disposal_date'=>$request->disposal_date,'catalog_remark'=>$request->catalog_remark,];
+    $data = DB::table('registers')->where('catalog_id', $request->catalog_id)->update($param);
+    return view('document_change_complete');
 
     return view('document_change_confirming',['register_data'=>$request]);
   }
